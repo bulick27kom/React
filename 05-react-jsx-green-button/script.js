@@ -1,11 +1,12 @@
 
-
+//let counter = 0;
 const App = () => {
-    let buttonText = 'Click me';
-    console.log('Called');
+    const [buttonText, setButtonText] = React.useState('Click me')
+    
     const onButtonClick = () => {
-        buttonText = 'hello from React'
-        console.log('buttonText :>> ', buttonText);
+        setButtonText('Hello from React')
+       // setButtonText((counter % 2 === 0) ? 'hello from React': 'Click me')
+        //counter++
     }
     return (
         <div className="app">
