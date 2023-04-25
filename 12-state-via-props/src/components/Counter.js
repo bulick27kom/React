@@ -1,6 +1,6 @@
-function Counter() {
+function Counter({ count }) {
     return (
-        <h1>Total clicks : 0</h1>
+        <h1>Total clicks : {count}</h1>
     )
 }
 

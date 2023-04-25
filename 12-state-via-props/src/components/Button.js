@@ -1,7 +1,10 @@
-function Button(){
-    return(
-        <button>Click me!</button>
+function Button({ onClick }) {
+    return (
+        <button onClick={onClick}>
+            Click me!
+        </button>
     )
 }
+
 
 export default Button
