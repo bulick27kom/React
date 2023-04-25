@@ -1,0 +1,13 @@
+.card {
+  width: 250px;
+  margin-top: 30px;
+  margin-left: 10px;
+  border: 1px lightblue solid;
+  border-radius: 10px;
+  padding-bottom: 10px;
+}
+
+.card > img {
+  width: 100%;
+  border-radius: 10px;
+}

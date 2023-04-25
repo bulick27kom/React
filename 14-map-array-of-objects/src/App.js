@@ -1,14 +1,9 @@
 import './App.css';
-import persons from './data/persons';
-import Person from './components/Person';
+import Persons from './components/Persons/Persons';
 
 function App() {
   return <div className="App">
-    {
-      persons.map((person) => {
-        return <Person person={person}/>
-      })
-    }
+    <Persons />
   </div>
 }
 
