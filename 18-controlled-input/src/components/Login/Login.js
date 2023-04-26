@@ -2,19 +2,20 @@ import "./Login.css"
 import { useState } from 'react'
 
 function Login() {
-    const [userName, setUserName] = useState('')
-    const [password, setPassword] = useState('')
+    // const [userName, setUserName] = useState('')
+    // const [password, setPassword] = useState('')
+
+    const [data, setData] = useState({ userName: '', password: '' })
 
     function handleFormSubmit(event) {
         event.preventDefault()
 
-        const userData = {
-            userName,
-            password
-        }
+        console.log(data);
+        alert(JSON.stringify(data))
+    }
 
-        console.log(userData);
-        alert(JSON.stringify(userData))
+    function handleInputChange(e, name) {
+        setData({ ...data, [name]: e.target.value })
     }
 
     return (
@@ -23,11 +24,19 @@ function Login() {
             <form onSubmit={handleFormSubmit}>
                 <label>
                     Username:
-                    <input type="text" value={userName} onChange={(e) => setUserName(e.target.value)} />
+                    <input
+                        type="text"
+                        value={data.userName}
+                        onChange={(e) => handleInputChange(e, 'userName')}
+                    />
                 </label>
                 <label>
                     Password:
-                    <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                    <input
+                        type="password"
+                        value={data.password}
+                        onChange={(e) => handleInputChange(e, 'password')}
+                    />
                 </label>
                 <button type="submit">Login</button>
             </form>
