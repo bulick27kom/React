@@ -1,10 +1,23 @@
 import './App.css';
+import { useEffect, useState } from 'react'
 
 function App() {
-  fetch('https://jsonplaceholder.typicode.com/todos/5')
-    .then(response => response.json())
-    .then(json => console.log(json))
-  return <div className="App"></div>
+  const [todo, setTodo] = useState(null)
+
+  useEffect(() => {
+    console.log('fetch called');
+    fetch('https://jsonplaceholder.typicode.com/todos/5')
+      .then(response => response.json())
+      .then(json => setTodo(json))
+  }, [])
+
+  console.log('App rendered');
+  console.log(todo);
+
+  return <div className="App">
+    {todo && <h1>{todo.title}</h1>}
+
+  </div>
 }
 
 export default App;
