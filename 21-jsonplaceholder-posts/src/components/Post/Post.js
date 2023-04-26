@@ -2,13 +2,13 @@ import './Post.css'
 
 
 function Post(props) {
-    const { post } = props
+    const {id, title, userId, body} = props
     return (
         <div className="card">
-            <h3>{post.id}</h3>
-            <h4>{post.userId}</h4>
-            <p>{post.title}</p>
-            <p>{post.body}</p>
+            <h3>{id}</h3>
+            <h4>{userId}</h4>
+            <p>{title}</p>
+            <p>{body}</p>
         </div>
     )
 }
