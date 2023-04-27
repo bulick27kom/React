@@ -13,24 +13,7 @@ function Posts() {
     useEffect(() => {
 
         // Можно так, просто создав асинхронную функцию внутри функции и сразу вызвав ее
-        // async function fetchData() {
-        //     try {
-        //         const res = await fetch(API_URL)
-        //         const posts = await res.json()
-        //         setPosts(posts)
-        //     }
-        //     catch (error) {
-        //         setError(error.message)
-        //     }
-        //     finally {
-        //         setIsLoading(false)
-        //     }
-        // }
-        // fetchData()
-
-        // Или создать самовызывающуюся функцию
-        // IFI - самовызывающаяся функция
-        (async function () {
+        async function fetchData() {
             try {
                 const res = await fetch(API_URL)
                 const posts = await res.json()
@@ -42,7 +25,24 @@ function Posts() {
             finally {
                 setIsLoading(false)
             }
-        })()
+        }
+        fetchData()
+
+        // Или создать самовызывающуюся функцию
+        // IFI - самовызывающаяся функция
+        // (async function () {
+        //     try {
+        //         const res = await fetch(API_URL)
+        //         const posts = await res.json()
+        //         setPosts(posts)
+        //     }
+        //     catch (error) {
+        //         setError(error.message)
+        //     }
+        //     finally {
+        //         setIsLoading(false)
+        //     }
+        // })()
 
 
     }, [])
