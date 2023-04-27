@@ -1,10 +1,16 @@
+// import './Info.css'
+import styles from './Info.module.css'
 
-function Info(){
-    return(
-        <>
+console.log('styles :>> ', styles);
+
+function Info() {
+    return (
+        <div className={styles.info}>
             <h1>Hello from info component</h1>
-            <button>Click me!</button>
-        </>
+            <button className={styles.myOtherButton}>
+                Click me in the info component
+            </button>
+        </div>
     )
 }
 
