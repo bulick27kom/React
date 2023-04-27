@@ -2,6 +2,7 @@ import './Posts.css'
 import { useEffect, useState } from 'react'
 import Post from "../Post/Post"
 
+const API_URL = 'https://jsonplaceholder.typicode.com/posts'
 
 function Posts() {
 
@@ -10,16 +11,65 @@ function Posts() {
     const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
-        fetch('https://jsonplaceholder.typicode.com/posts')
-            .then(responce => responce.json())
-            .then(data => { setPosts(data) })
-            .catch((error) => { setError(error.message) })
-            .finally(() => setIsLoading(false))
+
+        // Можно так, просто создав асинхронную функцию внутри функции и сразу вызвав ее
+        // async function fetchData() {
+        //     try {
+        //         const res = await fetch(API_URL)
+        //         const posts = await res.json()
+        //         setPosts(posts)
+        //     }
+        //     catch (error) {
+        //         setError(error.message)
+        //     }
+        //     finally {
+        //         setIsLoading(false)
+        //     }
+        // }
+        // fetchData()
+
+        // Или создать самовызывающуюся функцию
+        // IFI - самовызывающаяся функция
+        (async function () {
+            try {
+                const res = await fetch(API_URL)
+                const posts = await res.json()
+                setPosts(posts)
+            }
+            catch (error) {
+                setError(error.message)
+            }
+            finally {
+                setIsLoading(false)
+            }
+        })()
+
+
     }, [])
 
-    // if (isLoading) {
-    //     return <h1>Loading...</h1>
-    // }
+    // Так нельзя! Всинхронная функция всегда вовращает промис, даже не явно без return
+    // useEffect(async () => {
+    //     try {
+    //         const res = await fetch(API_URL)
+    //         const posts = await res.json()
+    //         setPosts(posts)
+    //     }
+    //     catch (error) {
+    //         setError(error.message)
+    //     }
+    //     finally {
+    //         setIsLoading(false)
+    //     }
+    // }, [])
+
+    // useEffect(() => {
+    //     fetch(API_URL)
+    //         .then(responce => responce.json())
+    //         .then(data => { setPosts(data) })
+    //         .catch((error) => { setError(error.message) })
+    //         .finally(() => setIsLoading(false))
+    // }, [])
+
 
     if (error) {
         return <h1>Error: {error}</h1>
