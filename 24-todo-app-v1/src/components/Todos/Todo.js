@@ -9,7 +9,8 @@ function Todo(props) {
             <div
                 className={styles.todoText}
                 onDoubleClick={() => { removeTodoFromArray(index) }}
-            > {RiTodoFill}
+            >
+                <RiTodoFill className={styles.toodIcon} />
                 {textTodo}
             </div>
         </div>
