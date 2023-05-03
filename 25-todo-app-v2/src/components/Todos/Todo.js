@@ -4,28 +4,21 @@ import { FaCheck } from "react-icons/fa";
 import styles from './Todo.module.css'
 
 function Todo(props) {
-    const { todo, removeTodoFromArray, markIsChecked, increaseCompleatedTodosCounter, decreaseCompleatedTodosCounter } = props
+    const { todo, removeTodoFromArray, markIsChecked } = props
     return (
         <div className={`${styles.todo} ${todo.isCompleated ? styles.completedTodo : ''}`}>
             <RiTodoFill className={styles.toodIcon} />
             <div className={styles.todoText}>
                 {todo.text}
             </div>
-            <RiDeleteBin2Line className={styles.deleteIcon} onClick={() => { removeTodoFromArray(todo.id)
-                                                                            if (todo.isCompleated){
-                                                                                decreaseCompleatedTodosCounter()
-                                                                            }
-                                                                            }} />
+            <RiDeleteBin2Line className={styles.deleteIcon} onClick={() =>  removeTodoFromArray(todo.id)
+                                                                            
+                                                                            } />
             <FaCheck
                 className={styles.checkIcon}
                 onClick={() => {
                     markIsChecked(todo.id);
-                    if (todo.isCompleated) {
-                        decreaseCompleatedTodosCounter()
-                    }
-                    else {
-                        increaseCompleatedTodosCounter()
-                    }
+                    
                 }}
             />
         </div>

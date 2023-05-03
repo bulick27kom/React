@@ -4,7 +4,7 @@ import styles from './TodoList.module.css'
 
 
 function TodoList(props) {
-    const { todoArray, removeTodoFromArray, markIsChecked, increaseCompleatedTodosCounter, decreaseCompleatedTodosCounter ,compleatedTodos } = props
+    const { todoArray, removeTodoFromArray, markIsChecked, completedTodosCount } = props
 
 
     return (
@@ -16,12 +16,10 @@ function TodoList(props) {
                     todo={todo}
                     removeTodoFromArray={removeTodoFromArray}
                     markIsChecked={markIsChecked}
-                    compleatedTodos={compleatedTodos}
-                    increaseCompleatedTodosCounter={increaseCompleatedTodosCounter}
-                    decreaseCompleatedTodosCounter={decreaseCompleatedTodosCounter}
+                    completedTodosCount={completedTodosCount}
                 />
             )}
-            {compleatedTodos > 0 && (compleatedTodos === 1 ? <h2>You have compleated 1 todo!</h2> : <h2>You have {compleatedTodos} todos! </h2>)}
+            {completedTodosCount > 0 && (completedTodosCount === 1 ? <h2>You have compleated 1 todo!</h2> : <h2>You have {completedTodosCount} todos! </h2>)}
         </div>
     )
 
