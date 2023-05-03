@@ -48,17 +48,17 @@ function App() {
     <h1>Todo App</h1>
     <TodoForm addTodoToArray={addTodoToArray} />
     {todoArray.length != 0 &&
-     <TodosActions
-      resetAllCompleatedMarks={resetAllCompleatedMarks}
-      deleteCompleatedTodos={deleteCompleatedTodos}
-      completedTodosCount={completedTodosCount}
-    />}
+      <TodosActions
+        resetAllCompleatedMarks={resetAllCompleatedMarks}
+        deleteCompleatedTodos={deleteCompleatedTodos}
+        completedTodosCount={completedTodosCount}
+      />}
     <TodoList
       todoArray={todoArray}
       removeTodoFromArray={removeTodoFromArray}
       markIsChecked={markIsChecked}
-      completedTodosCount={completedTodosCount}
     />
+    {completedTodosCount > 0 && (completedTodosCount === 1 ? <h2>You have compleated 1 todo!</h2> : <h2>You have {completedTodosCount} todos! </h2>)}
   </div>
 }
 
