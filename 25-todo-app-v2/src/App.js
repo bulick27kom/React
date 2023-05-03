@@ -25,6 +25,12 @@ function App() {
     setCompleatedTodos(0)
   }
 
+  function DeleteCompleatedTodos() {
+    setTodoArray(todoArray.filter((todo) => !todo.isCompleated
+    ))
+    setCompleatedTodos(0)
+  }
+
   function addTodoToArray(text) {
     const newTodo = {
       text: text,
@@ -48,7 +54,11 @@ function App() {
   return <div className="App">
     <h1>Todo App</h1>
     <TodoForm addTodoToArray={addTodoToArray} />
-    <TodosActions compleatedTodos={compleatedTodos} ResetAllCompleatedMarks={ResetAllCompleatedMarks} />
+    <TodosActions
+      compleatedTodos={compleatedTodos}
+      ResetAllCompleatedMarks={ResetAllCompleatedMarks}
+      DeleteCompleatedTodos={DeleteCompleatedTodos}
+    />
     <TodoList
       todoArray={todoArray}
       removeTodoFromArray={removeTodoFromArray}

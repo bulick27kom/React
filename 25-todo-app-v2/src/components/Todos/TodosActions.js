@@ -1,11 +1,23 @@
+import { RiRestartLine, RiDeleteBin2Fill } from "react-icons/ri"
 import Button from "../UI/Button"
 
 function TodosActions(props) {
-    const { compleatedTodos, ResetAllCompleatedMarks } = props
+    const { compleatedTodos, ResetAllCompleatedMarks, DeleteCompleatedTodos } = props
     return (
         <>
-            <Button key="reset" onClick={ResetAllCompleatedMarks} >Reset</Button>
-            <Button key="delete" disabled={!compleatedTodos}>Delete Completed</Button>
+            <Button
+                key="reset"
+                onClick={ResetAllCompleatedMarks}
+            >
+                <RiRestartLine />
+            </Button>
+            <Button
+                key="delete"
+                onClick={DeleteCompleatedTodos}
+                disabled={!compleatedTodos}
+            >
+                <RiDeleteBin2Fill />
+            </Button>
         </>
     )
 }

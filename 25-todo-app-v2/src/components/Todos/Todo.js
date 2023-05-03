@@ -11,7 +11,11 @@ function Todo(props) {
             <div className={styles.todoText}>
                 {todo.text}
             </div>
-            <RiDeleteBin2Line className={styles.deleteIcon} onClick={() => { removeTodoFromArray(todo.id) }} />
+            <RiDeleteBin2Line className={styles.deleteIcon} onClick={() => { removeTodoFromArray(todo.id)
+                                                                            if (todo.isCompleated){
+                                                                                decreaseCompleatedTodosCounter()
+                                                                            }
+                                                                            }} />
             <FaCheck
                 className={styles.checkIcon}
                 onClick={() => {
